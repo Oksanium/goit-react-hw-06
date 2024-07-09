@@ -15,7 +15,7 @@ export default function ContactForm({
     name: Yup.string()
       .min(3, "too short")
       .max(50, "too long")
-      .required("Required"),
+      .required("required"),
     number: Yup.string()
       .min(3, "too short")
       .max(50, "too long")
