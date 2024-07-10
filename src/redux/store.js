@@ -1,4 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
+
+import { devToolsEnhancer } from "@redux-devtools/extension";
 // import { persistStore, persistReducer } from "redux-persist";
 import {
   persistStore,
@@ -12,19 +14,17 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import { addContact, deleteContact } from "./contactsSlice";
+import { contactsReducer } from "./contactsSlice";
 
 const persistConfig = {
   key: "root",
   storage,
 };
-const persistedAdd = persistReducer(persistConfig, addContact);
-const persistedDelete = persistReducer(persistConfig, deleteContact);
+const persistedContacts = persistReducer(persistConfig, contactsReducer);
 
 export const store = configureStore({
   reducer: {
-    persistedAdd,
-    persistedDelete,
+    contacts: persistedContacts,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -33,5 +33,5 @@ export const store = configureStore({
       },
     }),
 });
-
+const enhancer = devToolsEnhancer();
 export const persistor = persistStore(store);

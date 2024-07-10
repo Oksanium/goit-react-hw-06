@@ -1,5 +1,5 @@
 import s from "./ContactList.module.css";
-import Contact from "../Contact/Contact";
+import ContactItem from "../ContactItem/ContactItem";
 import { useSelector } from "react-redux";
 import { selectContacts } from "../../redux/contactsSlice";
 
@@ -7,8 +7,10 @@ export default function ContactList({ query }) {
   const list = useSelector(selectContacts);
 
   function renderList(contact) {
-    return <Contact contact={contact} key={contact.id} id={contact.id} />;
+    return <ContactItem contact={contact} key={contact.id} id={contact.id} />;
   }
+
+  console.log(list);
 
   return (
     <div className={s.list}>

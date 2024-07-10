@@ -1,16 +1,11 @@
-import s from "./Contact.module.css";
+import s from "./ContactItem.module.css";
 import { IoPersonSharp } from "react-icons/io5";
 import { IoMdCall } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contactsSlice";
 
-export default function Contact({ contact, id }) {
+export default function ContactItem({ contact, id }) {
   const dispatch = useDispatch();
-
-  function onDeleteClickHandler(evt) {
-    dispatch(deleteContact(evt.target.id));
-    // deleteContact(evt.target.id);
-  }
 
   return (
     <div className={s.contact}>
@@ -25,7 +20,14 @@ export default function Contact({ contact, id }) {
         </div>
       </div>
 
-      <button onClick={onDeleteClickHandler} className={s.btn} id={id}>
+      <button
+        onClick={() => {
+          dispatch(deleteContact(id));
+          console.log(id);
+        }}
+        className={s.btn}
+        id={id}
+      >
         DELETE
       </button>
     </div>

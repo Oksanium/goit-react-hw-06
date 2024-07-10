@@ -1,23 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from "@reduxjs/toolkit";
 import initContacts from "../assets/contacts.json";
 
-console.log(initContacts);
-
 const initialState = {
-  // contacts: JSON.parse(localStorage.getItem("Phonebook")) || initContacts,
   contacts: initContacts,
 };
 
 const slice = createSlice({
   name: "contacts",
-  state: initialState,
+  initialState,
   selectors: {
     selectContacts: (state) => state.contacts,
   },
 
   reducers: {
-    addContact: (state, action) => {
-      state.contacts.push(action.payload);
+    addContact: {
+      reducer(state, action) {
+        state.contacts.push(action.payload);
+      },
+      prepare(newContact) {
+        return { payload: { ...newContact, id: nanoid() } };
+      },
     },
     deleteContact: (state, action) => {
       return state.contacts.filter((item) => {
