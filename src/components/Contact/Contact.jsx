@@ -1,10 +1,15 @@
 import s from "./Contact.module.css";
 import { IoPersonSharp } from "react-icons/io5";
 import { IoMdCall } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice";
 
-export default function Contact({ contact, deleteContact, id }) {
+export default function Contact({ contact, id }) {
+  const dispatch = useDispatch();
+
   function onDeleteClickHandler(evt) {
-    deleteContact(evt.target.id);
+    dispatch(deleteContact(evt.target.id));
+    // deleteContact(evt.target.id);
   }
 
   return (

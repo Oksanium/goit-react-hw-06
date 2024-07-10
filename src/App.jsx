@@ -12,46 +12,44 @@ import SearchBox from "./components/SearchBox/SearchBox";
 import ContactList from "./components/ContactList/ContactList";
 
 function App() {
-  const [contacts, setContacts] = useState(
-    JSON.parse(localStorage.getItem("Phonebook")) || initContacts
-  );
+  // const [contacts, setContacts] = useState(
+  //   JSON.parse(localStorage.getItem("Phonebook")) || initContacts
+  // );
   const [query, setQuery] = useState("");
-  useEffect(() => {
-    localStorage.setItem("Phonebook", JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem("Phonebook", JSON.stringify(contacts));
+  // }, [contacts]);
 
-  const newContId = nanoid();
+  // const newContId = nanoid();
 
-  function addContact(newCont) {
-    setContacts([...contacts, { ...newCont, id: newContId }]);
-  }
+  // function addContact(newCont) {
+  //   setContacts([...contacts, { ...newCont, id: newContId }]);
+  // }
 
-  function deleteContact(id) {
-    setContacts(contacts.filter((cont) => cont.id !== id));
-  }
+  // function deleteContact(id) {
+  //   setContacts(contacts.filter((cont) => cont.id !== id));
+  // }
 
   return (
-    <>
-      <div>
-        <h1>Phonebook</h1>
-        <ContactForm
-          Formik={Formik}
-          Form={Form}
-          Field={Field}
-          ErrorMessage={ErrorMessage}
-          setQuery={setQuery}
-          addContact={addContact}
-          contacts={contacts}
-          Yup={Yup}
-        />
-        <SearchBox setQuery={setQuery} />
-        <ContactList
-          list={contacts}
-          query={query}
-          deleteContact={deleteContact}
-        />
-      </div>
-    </>
+    <div>
+      <h1>Phonebook</h1>
+      {/* <ContactForm
+        Formik={Formik}
+        Form={Form}
+        Field={Field}
+        ErrorMessage={ErrorMessage}
+        setQuery={setQuery}
+        // addContact={addContact}
+        // contacts={contacts}
+        Yup={Yup}
+      />
+      <SearchBox setQuery={setQuery} /> */}
+      <ContactList
+        // list={contacts}
+        query={query}
+        // deleteContact={deleteContact}
+      />
+    </div>
   );
 }
 
