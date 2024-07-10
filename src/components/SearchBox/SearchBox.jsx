@@ -1,8 +1,14 @@
 import s from "./SearchBox.module.css";
 
-export default function SearchBox({ setQuery }) {
+import { useDispatch } from "react-redux";
+
+import { changeFilter } from "../../redux/filtersSlice";
+
+export default function SearchBox() {
+  const dispatch = useDispatch();
+
   function handleChange(e) {
-    setQuery(e.target.value.toLowerCase());
+    dispatch(changeFilter(e.target.value.toLowerCase()));
   }
 
   return (

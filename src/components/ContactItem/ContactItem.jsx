@@ -23,7 +23,6 @@ export default function ContactItem({ contact, id }) {
       <button
         onClick={() => {
           dispatch(deleteContact(id));
-          console.log(id);
         }}
         className={s.btn}
         id={id}
