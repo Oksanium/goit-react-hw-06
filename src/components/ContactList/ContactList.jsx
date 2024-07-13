@@ -12,8 +12,6 @@ export default function ContactList() {
     return <ContactItem contact={contact} key={contact.id} id={contact.id} />;
   }
 
-  console.log(list);
-
   return (
     <div className={s.list}>
       {list

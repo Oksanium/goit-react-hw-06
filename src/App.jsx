@@ -1,7 +1,3 @@
-import { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-
 import "./App.css";
 
 // import initContacts from "./assets/contacts.json";
@@ -14,13 +10,7 @@ function App() {
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm
-        Formik={Formik}
-        Form={Form}
-        Field={Field}
-        ErrorMessage={ErrorMessage}
-        Yup={Yup}
-      />
+      <ContactForm />
       <SearchBox />
       <ContactList />
     </div>
